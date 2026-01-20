@@ -1,4 +1,4 @@
-# Pipeline de Procesamiento Distribuido con Docker Compose
+# Pipeline de procesamiento distribuido con Docker Compose
 
 Este proyecto demuestra un **pipeline de procesamiento distribuido** donde tres microservicios se comunican entre sí para procesar un archivo secuencialmente.
 
@@ -10,7 +10,7 @@ El ejercicio simula un pipeline donde:
 3. **Proyecto3**: Lee el archivo, lo procesa y completa el pipeline
 
 
-## **Tecnologías Utilizadas**
+## **Tecnologías utilizadas**
 
 - **.NET 8** - Framework de desarrollo
 - **Docker Compose** - Orquestación de contenedores
@@ -18,32 +18,32 @@ El ejercicio simula un pipeline donde:
 
 ## **Cómo Ejecutar**
 
-### 1. **Construir y Levantar los Servicios**
+### 1. **Construir y levantar los servicios**
 ```bash
 docker-compose up --build
 ```
 
-### 2. **Ejecutar el Pipeline Completo**
+### 2. **Ejecutar el pipeline completo**
 ```bash
 # Iniciar el pipeline enviando POST a Proyecto1
 curl -X POST http://localhost:5001/create-file
 ```
 
-### 3. **Ver el Resultado Final**
+### 3. **Ver el resultado final**
 ```bash
 # Leer el archivo procesado
 curl http://localhost:5003/read-file
 ```
 
-## **Comunicación entre Servicios**
+## **Comunicación entre servicios**
 
 Los servicios se comunican usando los nombres de contenedor en la red Docker:
 - `http://proyecto2/process-file`
 - `http://proyecto3/finalize-file`
 
 
-## **Solución de Problemas**
+## **Solución de problemas**
 
-### **Error de Conexión entre Servicios**
+### **Error de conexión entre servicios**
 - Verificar que la red `red-prueba` esté creada
 - Confirmar que los nombres de contenedor sean correctos
