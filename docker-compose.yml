@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  proyecto1:
+    build:
+      context: ./Proyectos/proyecto1
+      dockerfile: Dockerfile
+    container_name: proyecto1
+    networks:
+      - red-prueba
+    volumes:
+      - shared-files:/app/shared
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5001:80"
+
+  proyecto2:
+    build:
+      context: ./Proyectos/proyecto2
+      dockerfile: Dockerfile
+    container_name: proyecto2
+    networks:
+      - red-prueba
+    volumes:
+      - shared-files:/app/shared
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5002:80"
+
+  proyecto3:
+    build:
+      context: ./Proyectos/proyecto3
+      dockerfile: Dockerfile
+    container_name: proyecto3
+    networks:
+      - red-prueba
+    volumes:
+      - shared-files:/app/shared
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5003:80"
+
+networks:
+  red-prueba:
+    driver: bridge
+    name: red-prueba
+
+volumes:
+  shared-files:
+    name: shared-files
